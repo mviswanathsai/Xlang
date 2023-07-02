@@ -17,7 +17,6 @@ for {
 	fmt.Printf(PROMPT)
 	scanned := scanner.Scan()
 	if (!scanned) {
-		fmt.Printf("returned")
 		return
 	}
 	input := scanner.Text()
