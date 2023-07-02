@@ -48,6 +48,8 @@ func TestCaseSrcCode(t *testing.T) {
 		};
 		let result = add(five, ten);
 		`
+
+
 		testInput := []struct {
 		expectedType token.TokenType
 		expectedLiteral string
@@ -94,8 +96,14 @@ func TestCaseSrcCode(t *testing.T) {
 
 	l := New(input)
 
+	fmt.Printf("%+v \n", len(input))
+
+
 	for i,tt := range testInput{
 		tok := l.NextToken()
+
+		
+
 		if(tok.Type != tt.expectedType){
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
@@ -104,8 +112,8 @@ func TestCaseSrcCode(t *testing.T) {
 			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q",i, tt.expectedLiteral, tok.Literal)
 		}
 
-		fmt.Printf( "%+v\n", tok )
 
 	}
+
 
 }
