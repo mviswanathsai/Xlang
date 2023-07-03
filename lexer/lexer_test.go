@@ -32,7 +32,7 @@ func TestCaseSymbols(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if(tok.Literal != tt.expectedLiteral){
+		if(string(tok.Literal) != tt.expectedLiteral){
 			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q",i, tt.expectedLiteral, tok.Literal)
 		}
 
@@ -108,7 +108,7 @@ func TestCaseSrcCode(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if(tok.Literal != tt.expectedLiteral){
+		if(string(tok.Literal) != tt.expectedLiteral){
 			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q",i, tt.expectedLiteral, tok.Literal)
 		}
 
@@ -124,7 +124,7 @@ func TestCaseExtendedSrcCode(t *testing.T) {
 	let add = fn(x, y) {
 		x + y;
 	};
-	let result = add(five, ten);
+	let Señor = add(five, ten);
 	!-/*5;
 	5 < 10 > 5;`
 
@@ -159,7 +159,7 @@ func TestCaseExtendedSrcCode(t *testing.T) {
 		{token.RBRACE, "}"},
 		{token.SEMICOLON, ";"},
 		{token.LET, "let"},
-		{token.IDENT, "result"},
+		{token.IDENT, "Señor"},
 		{token.ASSIGN, "="},
 		{token.IDENT, "add"},
 		{token.LPAREN, "("},
@@ -192,7 +192,7 @@ func TestCaseExtendedSrcCode(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if tok.Literal != tt.expectedLiteral {
+		if string(tok.Literal) != tt.expectedLiteral {
 			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, tok.Literal)
 		}
 	}
@@ -294,10 +294,11 @@ func TestCaseExtendedIdentsSrcCode(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if tok.Literal != tt.expectedLiteral {
+		if string(tok.Literal) != tt.expectedLiteral {
 			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, tok.Literal)
 		}
 	}
 }
+
 
 

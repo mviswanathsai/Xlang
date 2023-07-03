@@ -4,7 +4,7 @@ type TokenType string
 
 type Token struct {
 	Type    TokenType
-	Literal string
+	Literal []rune
 }
 
 const (
@@ -52,8 +52,8 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 }
 
-func FindIdentTokenType(ident string) TokenType {
-	if tokenType, ok := keywords[ident]; ok {
+func FindIdentTokenType(ident []rune) TokenType {
+	if tokenType, ok := keywords[string(ident)]; ok {
 		return tokenType
 	}
 	return IDENT
